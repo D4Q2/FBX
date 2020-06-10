@@ -15,12 +15,12 @@
 
 		<script type="module">
 
-			import * as THREE from '../build/three.module.js';
+			import * as THREE from 'three.module.js';
 
-			import Stats from './jsm/libs/stats.module.js';
+			import Stats from 'stats.module.js';
 
-			import { OrbitControls } from './jsm/controls/OrbitControls.js';
-			import { FBXLoader } from './jsm/loaders/FBXLoader.js';
+			import { OrbitControls } from 'OrbitControls.js';
+			import { FBXLoader } from 'FBXLoader.js';
 
 			var container, stats, controls;
 			var camera, scene, renderer, light;
@@ -72,7 +72,7 @@
 
 				// model
 				var loader = new FBXLoader();
-				loader.load( 'models/fbx/Samba Dancing.fbx', function ( object ) {
+				loader.load( 'Samba Dancing.fbx', function ( object ) {
 
 					mixer = new THREE.AnimationMixer( object );
 
