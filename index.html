@@ -131,62 +131,7 @@
 
 			}
 			
-			        // Set up our fbx
-				var loader = new FBXLoader();
-				loader.load( 'Rifle Run.fbx', function ( Player ) {
-
-					mixer = new THREE.AnimationMixer( Player );
-					
-
-					var action = mixer.clipAction( Player.animations[ 0 ] );
-					action.play();
-
-					Player.traverse( function ( child ) {
-
-						if ( child.isMesh ) {
-
-							child.castShadow = true;
-							child.receiveShadow = true;
-
-						}
-
-					} );
-					scene.add( Player );
-					
-					let translateSpeed = 1; // units per second
-					let distance = translateSpeed * clock.getDelta();
-   
-				if(!isMobile){
-	  				if( keyboard.isKeyPressed("D") ){
- 	    					Player.translateX( distance );
-   	  				}
-   	  				if( keyboard.isKeyPressed("A") ){
- 	    					Player.translateX( -distance );
-  	  				}
-   	  				if( keyboard.isKeyPressed("W") ){
-	     					Player.translateZ( -distance );
-   	  				}
-   	  				if( keyboard.isKeyPressed("S") ){
- 	    					Player.translateZ( distance );
-   	  				}
-				}
-
-        			if (isMobile) {
-	   				if( joystick.right() ){
-	     					Player.translateX( distance );  
-   	   				}
-  	   				if( joystick.left() ){
-	     					Player.translateX( -distance );   
- 	   				}
-  	   				if( joystick.up() ){
-	     					Player.translateZ( -distance );      
- 	   				}
- 	   				if( joystick.down() ){
- 	     					Player.translateZ( distance );
-   	   				}
-				}
-
-				} );
+			        
 
 			function onWindowResize() {
 
@@ -244,6 +189,63 @@
  	     					Player.translateZ( distance );
    	   				}
 				} */
+				
+				// Set up our fbx
+				var loader = new FBXLoader();
+				loader.load( 'Rifle Run.fbx', function ( Player ) {
+
+					mixer = new THREE.AnimationMixer( Player );
+					
+
+					var action = mixer.clipAction( Player.animations[ 0 ] );
+					action.play();
+
+					Player.traverse( function ( child ) {
+
+						if ( child.isMesh ) {
+
+							child.castShadow = true;
+							child.receiveShadow = true;
+
+						}
+
+					} );
+					scene.add( Player );
+					
+					let translateSpeed = 1; // units per second
+					let distance = translateSpeed * clock.getDelta();
+   
+				if(!isMobile){
+	  				if( keyboard.isKeyPressed("D") ){
+ 	    					Player.translateX( distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("A") ){
+ 	    					Player.translateX( -distance );
+  	  				}
+   	  				if( keyboard.isKeyPressed("W") ){
+	     					Player.translateZ( -distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("S") ){
+ 	    					Player.translateZ( distance );
+   	  				}
+				}
+
+        			if (isMobile) {
+	   				if( joystick.right() ){
+	     					Player.translateX( distance );  
+   	   				}
+  	   				if( joystick.left() ){
+	     					Player.translateX( -distance );   
+ 	   				}
+  	   				if( joystick.up() ){
+	     					Player.translateZ( -distance );      
+ 	   				}
+ 	   				if( joystick.down() ){
+ 	     					Player.translateZ( distance );
+   	   				}
+				}
+
+				} );
 			}
 
 		</script>
