@@ -152,36 +152,8 @@
 
 					} );
 					scene.add( Player );
-				} );
-
-			}
-			
-			        
-
-			function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-			}
-
-			
-
-			function animate() {
-
-				requestAnimationFrame( animate );
-
-				var delta = clock.getDelta();
-
-				if ( mixer ) mixer.update( delta );
-
-				renderer.render( scene, camera );
-
-				stats.update();
-		
-				let translateSpeed = 1; // units per second
+					
+									let translateSpeed = 1; // units per second
 				let distance = translateSpeed * delta;
    
 				if(!isMobile){
@@ -212,7 +184,36 @@
  	   				if( joystick.down() ){
  	     					Player.translateZ( distance );
    	   				}
-				} 
+				}
+				} );
+
+			}
+			
+			        
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				var delta = clock.getDelta();
+
+				if ( mixer ) mixer.update( delta );
+
+				renderer.render( scene, camera );
+
+				stats.update();
+		 
 
 			}
 
