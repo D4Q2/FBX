@@ -29,6 +29,7 @@
 			var camera, scene, renderer, light, cube;
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+			var keyboard = new Keyboard();
 
 			var clock = new THREE.Clock();
 
@@ -181,10 +182,6 @@
 			
 			
 			function update() {
-				if(!isMobile) {
-	 				keyboard.update();
-				}
-
 		
 				let translateSpeed = 1; // units per second
 				let distance = translateSpeed * deltaTime;
