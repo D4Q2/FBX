@@ -27,7 +27,7 @@
 
 			var container, stats, controls;
 			var camera, scene, renderer, light;
-			var Player;
+			var player;
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			var keyboard = new Keyboard();
@@ -136,12 +136,12 @@
 
 					mixer = new THREE.AnimationMixer( object );
 					
-					Player = object;
+					player = object;
 
-					var action = mixer.clipAction( Player.animations[ 0 ] );
+					var action = mixer.clipAction( player.animations[ 0 ] );
 					action.play();
 
-					Player.traverse( function ( child ) {
+					player.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
 
@@ -151,38 +151,38 @@
 						}
 
 					} );
-					scene.add( Player );
+					scene.add( player );
 					
 									let translateSpeed = 1; // units per second
 				let distance = translateSpeed * delta;
    
 				if(!isMobile){
 	  				if( keyboard.isKeyPressed("D") ){
- 	    					Player.translateX( distance );
+ 	    					player.translateX( distance );
    	  				}
    	  				if( keyboard.isKeyPressed("A") ){
- 	    					Player.translateX( -distance );
+ 	    					player.translateX( -distance );
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
-	     					Player.translateZ( -distance );
+	     					player.translateZ( -distance );
    	  				}
    	  				if( keyboard.isKeyPressed("S") ){
- 	    					Player.translateZ( distance );
+ 	    					player.translateZ( distance );
    	  				}
 				}
 
         			if (isMobile) {
 	   				if( joystick.right() ){
-	     					Player.translateX( distance );  
+	     					player.translateX( distance );  
    	   				}
   	   				if( joystick.left() ){
-	     					Player.translateX( -distance );   
+	     					player.translateX( -distance );   
  	   				}
   	   				if( joystick.up() ){
-	     					Player.translateZ( -distance );      
+	     					player.translateZ( -distance );      
  	   				}
  	   				if( joystick.down() ){
- 	     					Player.translateZ( distance );
+ 	     					player.translateZ( distance );
    	   				}
 				}
 				} );
