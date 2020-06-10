@@ -13,6 +13,9 @@
 			Character and animation from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a>
 		</div>
 
+		<script src="JS/VirtualJoystick.js"></script>
+		<script src="JS/Keyboard.js"></script>
+		
 		<script type="module">
 
 			import * as THREE from './three.module.js';
@@ -109,6 +112,39 @@
 				// stats
 				stats = new Stats();
 				container.appendChild( stats.dom );
+				
+				var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	                        if (isMobile) {
+		                        if (/iPhone/i.test(navigator.userAgent)) {
+			                	alert("This web application does not work very well on iPhone's. You may want to switch to a tablet or computer for a better experience.");
+		                	}
+		                	if (window.innerWidth > window.innerHeight) {
+		   		        	// Landscape
+		   				var joystick = new VirtualJoystick({
+                      					mouseSupport: true,
+		      					stationaryBase: true,
+                      					baseX: window.innerWidth / 6,
+                      					baseY: window.innerHeight / 2,
+		      					limitStickTravel: true,
+		      					stickRadius: 50
+                   				}); 
+					}
+					else { 
+		    				// Portrait
+	            				var joystick = new VirtualJoystick({
+                      					mouseSupport: true,
+		      					stationaryBase: true,
+                      					baseX: window.innerWidth / 6,
+                      					baseY: window.innerHeight / 4 * 3,
+		      					limitStickTravel: true,
+		      					stickRadius: 50
+                   				}); 
+					}
+		
+				} 
+				if (!isMobile) {
+					var keyboard = new Keyboard();
+				}
 
 			}
 
@@ -121,7 +157,7 @@
 
 			}
 
-			//
+			
 
 			function animate() {
 
@@ -134,7 +170,50 @@
 				renderer.render( scene, camera );
 
 				stats.update();
+				
+				update();
 
+			}
+			
+			
+			function update() {
+				if(!isMobile) {
+	 				keyboard.update();
+				}
+
+		
+				let translateSpeed = 1; // units per second
+				let distance = translateSpeed * deltaTime;
+   
+				if(!isMobile){
+	  				if( keyboard.isKeyPressed("D") ){
+ 	    					cube.translateX( distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("A") ){
+ 	    					cube.translateX( -distance );
+  	  				}
+   	  				if( keyboard.isKeyPressed("W") ){
+	     					cube.translateZ( -distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("S") ){
+ 	    					cube.translateZ( distance );
+   	  				}
+				}
+
+        			if (isMobile) {
+	   				if( joystick.right() ){
+	     					cube.translateX( distance );  
+   	   				}
+  	   				if( joystick.left() ){
+	     					cube.translateX( -distance );   
+ 	   				}
+  	   				if( joystick.up() ){
+	     					cube.translateZ( -distance );      
+ 	   				}
+ 	   				if( joystick.down() ){
+ 	     					cube.translateZ( distance );
+   	   				}
+				}
 			}
 
 		</script>
