@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>FBX -> 8</title>
+		<title>FBX -> 9</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -26,7 +26,7 @@
 			import { FBXLoader } from './JS/FBXLoader.js';
 
 			var container, stats, controls;
-			var camera, scene, renderer, light;
+			var camera, scene, renderer, light, cube;
 
 			var clock = new THREE.Clock();
 
@@ -92,8 +92,8 @@
 						}
 
 					} );
-
-					scene.add( object );
+					cube.add( object );
+					scene.add( cube );
 
 				} );
 
