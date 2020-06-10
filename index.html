@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>FBX -> 12</title>
+		<title>FBX -> 13</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -76,29 +76,7 @@
 				grid.material.transparent = true;
 				scene.add( grid );
 
-				// model
-				var loader = new FBXLoader();
-				loader.load( 'Rifle Run.fbx', function ( object ) {
-
-					mixer = new THREE.AnimationMixer( object );
-
-					var action = mixer.clipAction( object.animations[ 0 ] );
-					action.play();
-
-					object.traverse( function ( child ) {
-
-						if ( child.isMesh ) {
-
-							child.castShadow = true;
-							child.receiveShadow = true;
-
-						}
-
-					} );
-					cube.add( object );
-					scene.add( cube );
-
-				} );
+				
 
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
@@ -152,6 +130,63 @@
 				}
 
 			}
+			
+			        // Set up our fbx
+				var loader = new FBXLoader();
+				loader.load( 'Rifle Run.fbx', function ( Player ) {
+
+					mixer = new THREE.AnimationMixer( Player );
+					
+
+					var action = mixer.clipAction( object.animations[ 0 ] );
+					action.play();
+
+					Player.traverse( function ( child ) {
+
+						if ( child.isMesh ) {
+
+							child.castShadow = true;
+							child.receiveShadow = true;
+
+						}
+
+					} );
+					scene.add( Player );
+					
+					let translateSpeed = 1; // units per second
+					let distance = translateSpeed * delta;
+   
+				if(!isMobile){
+	  				if( keyboard.isKeyPressed("D") ){
+ 	    					Player.translateX( distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("A") ){
+ 	    					Player.translateX( -distance );
+  	  				}
+   	  				if( keyboard.isKeyPressed("W") ){
+	     					Player.translateZ( -distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("S") ){
+ 	    					Player.translateZ( distance );
+   	  				}
+				}
+
+        			if (isMobile) {
+	   				if( joystick.right() ){
+	     					Player.translateX( distance );  
+   	   				}
+  	   				if( joystick.left() ){
+	     					Player.translateX( -distance );   
+ 	   				}
+  	   				if( joystick.up() ){
+	     					Player.translateZ( -distance );      
+ 	   				}
+ 	   				if( joystick.down() ){
+ 	     					Player.translateZ( distance );
+   	   				}
+				}
+
+				} );
 
 			function onWindowResize() {
 
@@ -176,39 +211,39 @@
 
 				stats.update();
 
-		
+/*		
 				let translateSpeed = 1; // units per second
 				let distance = translateSpeed * delta;
    
 				if(!isMobile){
 	  				if( keyboard.isKeyPressed("D") ){
- 	    					cube.translateX( distance );
+ 	    					Player.translateX( distance );
    	  				}
    	  				if( keyboard.isKeyPressed("A") ){
- 	    					cube.translateX( -distance );
+ 	    					Player.translateX( -distance );
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
-	     					cube.translateZ( -distance );
+	     					Player.translateZ( -distance );
    	  				}
    	  				if( keyboard.isKeyPressed("S") ){
- 	    					cube.translateZ( distance );
+ 	    					Player.translateZ( distance );
    	  				}
 				}
 
         			if (isMobile) {
 	   				if( joystick.right() ){
-	     					cube.translateX( distance );  
+	     					Player.translateX( distance );  
    	   				}
   	   				if( joystick.left() ){
-	     					cube.translateX( -distance );   
+	     					Player.translateX( -distance );   
  	   				}
   	   				if( joystick.up() ){
-	     					cube.translateZ( -distance );      
+	     					Player.translateZ( -distance );      
  	   				}
  	   				if( joystick.down() ){
- 	     					cube.translateZ( distance );
+ 	     					Player.translateZ( distance );
    	   				}
-				}
+				} */
 			}
 
 		</script>
