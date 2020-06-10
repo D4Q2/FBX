@@ -136,7 +136,7 @@
 
 					mixer = new THREE.AnimationMixer( object );
 					
-					player = object;
+					var player = object;
 
 					var action = mixer.clipAction( player.animations[ 0 ] );
 					action.play();
@@ -153,7 +153,7 @@
 					} );
 					scene.add( player );
 					
-					delta = clock.getDelta();
+					var delta = clock.getDelta();
 									let translateSpeed = 1; // units per second
 				let distance = translateSpeed * delta;
    
