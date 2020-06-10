@@ -27,6 +27,8 @@
 
 			var container, stats, controls;
 			var camera, scene, renderer, light, cube;
+			
+			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 			var clock = new THREE.Clock();
 
@@ -113,7 +115,9 @@
 				stats = new Stats();
 				container.appendChild( stats.dom );
 				
-				var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+				// Check if this is a mobiel device
+				// If it is, create a joystick
+				// If it is not, setup the keyboard
 	                        if (isMobile) {
 		                        if (/iPhone/i.test(navigator.userAgent)) {
 			                	alert("This web application does not work very well on iPhone's. You may want to switch to a tablet or computer for a better experience.");
