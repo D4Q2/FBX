@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>FBX -> 17</title>
+		<title>FBX -> 18</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -138,10 +138,10 @@
 					
 					Player = object;
 
-					var action = mixer.clipAction( object.animations[ 0 ] );
+					var action = mixer.clipAction( Player.animations[ 0 ] );
 					action.play();
 
-					object.traverse( function ( child ) {
+					Player.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
 
@@ -151,7 +151,7 @@
 						}
 
 					} );
-					scene.add( object );
+					scene.add( Player );
 				} );
 
 			}
