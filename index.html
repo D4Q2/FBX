@@ -149,8 +149,10 @@
 							child.receiveShadow = true;
 
 						}
+						
 
 					} );
+					player.position.set(0, 0, -10);
 					scene.add( player );
 					
 					var delta = clock.getDelta();
@@ -215,7 +217,38 @@
 
 				stats.update();
 		 
+				let translateSpeed = 1; // units per second
+				let distance = translateSpeed * delta;
+   
+				if(!isMobile){
+	  				if( keyboard.isKeyPressed("D") ){
+ 	    					player.translateX( distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("A") ){
+ 	    					player.translateX( -distance );
+  	  				}
+   	  				if( keyboard.isKeyPressed("W") ){
+	     					player.translateZ( -distance );
+   	  				}
+   	  				if( keyboard.isKeyPressed("S") ){
+ 	    					player.translateZ( distance );
+   	  				}
+				}
 
+        			if (isMobile) {
+	   				if( joystick.right() ){
+	     					player.translateX( distance );  
+   	   				}
+  	   				if( joystick.left() ){
+	     					player.translateX( -distance );   
+ 	   				}
+  	   				if( joystick.up() ){
+	     					player.translateZ( -distance );      
+ 	   				}
+ 	   				if( joystick.down() ){
+ 	     					player.translateZ( distance );
+   	   				}
+				}
 			}
 
 		</script>
