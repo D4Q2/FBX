@@ -2,4 +2,4 @@
 hi
 <input class="button" type="submit" value="Play Game (input)">
 hello
-<button class="button" type="submit">Play Game (button)</button>
+<button class="button big" type="submit">Play Game (button)</button>
