@@ -125,6 +125,8 @@
 						}
 						
 						player.add( object );
+
+                                                player.add( camera );
 						scene.add( player );
 						player.position.set(0, 0, -20);
 
@@ -191,25 +193,25 @@
 	     					player.position.x += 1;
 						player.rotation.y += 0.05;
 						console.log(player.rotation);
-						camera.position.x += 1;
-						camera.rotation.y -= 0.05;
+						//camera.position.x += 1;
+						//camera.rotation.y -= 0.05;
    	   				}
   	   				if( joystick.left() ){
 	     					player.position.x -= 1;
 						player.rotation.y -= 0.05;
 						console.log(player.rotation);
-						camera.position.x -= 1;
-						camera.position.y -= 0.05;
+						//camera.position.x -= 1;
+						//camera.position.y += 0.05;
  	   				}
   	   				if( joystick.up() ){
 	     					player.position.z += 1;
 						console.log(player.rotation);
-						camera.position.z += 1;
+						//camera.position.z += 1;
  	   				}
  	   				if( joystick.down() ){
  	     					player.position.z -= 1;
 						console.log(player.rotation);
-						camera.position.z -= 1;
+						//camera.position.z -= 1;
    	   				}
 				}
 			}
