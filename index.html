@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 30.1</title>
+		<title>Version -> 30.2</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -129,50 +129,9 @@
 						
 						player.add( object );
 						scene.add( player );
-						console.log(player.position);
-						console.log(camera.position);
 						player.position.set(0, 0, -20);
-						console.log(player.position);
-						console.log(camera.position);
 
 					} );
-					
-					
-					var delta = clock.getDelta();
-									let translateSpeed = 1; // units per second
-				let distance = translateSpeed * delta;
-   
-				if(!isMobile){
-	  				if( keyboard.isKeyPressed("D") ){
- 	    					player.translateX( distance );
-   	  				}
-   	  				if( keyboard.isKeyPressed("A") ){
- 	    					player.translateX( -distance );
-  	  				}
-   	  				if( keyboard.isKeyPressed("W") ){
-	     					player.translateZ( -distance );
-   	  				}
-   	  				if( keyboard.isKeyPressed("S") ){
- 	    					player.translateZ( distance );
-   	  				}
-				}
-
-        			if (isMobile) {
-	   				if( joystick.right() ){
-	     					player.translateX( distance );  
-   	   				}
-  	   				if( joystick.left() ){
-	     					player.translateX( -distance );   
- 	   				}
-  	   				if( joystick.up() ){
-	     					player.translateZ( -distance );      
- 	   				}
- 	   				if( joystick.down() ){
- 	     					player.translateZ( distance );
-   	   				}
-				}
-				} );
-
 			}
 			
 			        
@@ -218,7 +177,7 @@
    	  				}
 				}
 
-        			//if (isMobile) {
+        			if (isMobile) {
 	   				if( joystick.right() ){
 	     					player.position.x += translateSpeed;
    	   				}
@@ -231,7 +190,7 @@
  	   				if( joystick.down() ){
  	     					player.position.z -= translateSpeed;
    	   				}
-				//}
+				}
 			}
 
 		</script>
