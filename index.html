@@ -226,35 +226,34 @@
 				stats.update();
 		 
 				let translateSpeed = 1; // units per second
-				let distance = translateSpeed * delta;
    
 				if(!isMobile){
 	  				if( keyboard.isKeyPressed("D") ){
- 	    					player.translateX( distance );
+ 	    					player.position.x += translateSpeed;
    	  				}
    	  				if( keyboard.isKeyPressed("A") ){
- 	    					player.translateX( -distance );
+ 	    					player.position.x -= translateSpeed;
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
-	     					player.translateZ( -distance );
+	     					player.position.z += translateSpeed;
    	  				}
    	  				if( keyboard.isKeyPressed("S") ){
- 	    					player.translateZ( distance );
+ 	    					player.position.z -= translateSpeed;
    	  				}
 				}
 
         			if (isMobile) {
 	   				if( joystick.right() ){
-	     					player.translateX( distance );  
+	     					player.position.x += translateSpeed;
    	   				}
   	   				if( joystick.left() ){
-	     					player.translateX( -distance );   
+	     					player.position.x -= translateSpeed;  
  	   				}
   	   				if( joystick.up() ){
-	     					player.translateZ( -distance );      
+	     					player.position.z -= translateSpeed;      
  	   				}
  	   				if( joystick.down() ){
- 	     					player.translateZ( distance );
+ 	     					player.position.z += translateSpeed;
    	   				}
 				}
 			}
