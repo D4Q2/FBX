@@ -1,15 +1,3 @@
-<html>
-  <head>
-    <title>HI</title>
-    <style>
-      .buttonLink {
-        color: white;
-        background-color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <b>FBX</b><br>
-    A game in progress. Website: <a href="https://d4q2.github.io/FBX/" class="buttonLink">here</a>.
-  </body>
-</html>
+<a href="https://d4q2.github.io/FBX/" class="button">Play Game (link)</a>
+<input class="button" type="submit" value="Play Game (input)">
+<button class="button" type="submit">Play Game (button)</button>
