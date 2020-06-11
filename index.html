@@ -158,8 +158,6 @@
 				renderer.render( scene, camera );
 
 				stats.update();
-				console.log("Position: " + camera.position);
-				console.log("Rotation: " + camera.rotation);
 		 
 				let translateSpeed = 1; // units per second
    
@@ -167,30 +165,38 @@
 					keyboard.update();
 	  				if( keyboard.isKeyPressed("D") ){
  	    					player.position.x -= 1;
+						camera.position.x -= 1;
    	  				}
    	  				if( keyboard.isKeyPressed("A") ){
  	    					player.position.x += 1;
+						camera.position.x += 1;
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
 	     					player.position.z += 1;
+						camera.position.z += 1;
    	  				}
    	  				if( keyboard.isKeyPressed("S") ){
  	    					player.position.z -= 1;
+						camera.position.z -= 1;
    	  				}
 				}
 
         			if (isMobile) {
 	   				if( joystick.right() ){
 	     					player.position.x += 1;
+						camera.position.x += 1;
    	   				}
   	   				if( joystick.left() ){
-	     					player.position.x -= 1;  
+	     					player.position.x -= 1; 
+						camera.position.x -= 1;
  	   				}
   	   				if( joystick.up() ){
-	     					player.position.z += 1;      
+	     					player.position.z += 1;
+						camera.position.z += 1;
  	   				}
  	   				if( joystick.down() ){
  	     					player.position.z -= 1;
+						camera.position.z -= 1;
    	   				}
 				}
 			}
