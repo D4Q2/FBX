@@ -108,41 +108,6 @@
 				stats = new Stats();
 				container.appendChild( stats.dom );
 				
-				// Check if this is a mobiel device
-				// If it is, create a joystick
-				// If it is not, setup the keyboard
-	                        /*if (isMobile) {
-		                        if (/iPhone/i.test(navigator.userAgent)) {
-			                	alert("This web application does not work very well on iPhone's. You may want to switch to a tablet or computer for a better experience.");
-		                	}
-		                	if (window.innerWidth > window.innerHeight) { */
-		   		        	// Landscape
-		   				var joystick = new VirtualJoystick({
-                      					mouseSupport: true,
-		      					stationaryBase: true,
-                      					baseX: window.innerWidth / 6,
-                      					baseY: window.innerHeight / 2,
-		      					limitStickTravel: true,
-		      					stickRadius: 50
-                   				}); 
-					/*}
-					else { 
-		    				// Portrait
-	            				var joystick = new VirtualJoystick({
-                      					mouseSupport: true,
-		      					stationaryBase: true,
-                      					baseX: window.innerWidth / 6,
-                      					baseY: window.innerHeight / 4 * 3,
-		      					limitStickTravel: true,
-		      					stickRadius: 50
-                   				}); 
-					}
-		
-				}  */
-				if (!isMobile) {
-					var keyboard = new Keyboard();
-				}
-				
 				// Set up our fbx
 				var loader = new FBXLoader();
 				loader.load( 'Rifle Run.fbx', function ( object ) {
