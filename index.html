@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 32</title>
+		<title>Version -> 33</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
 	</head>
 
 	<body>
-		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - FBXLoader<br />
-			Character and animation from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a>
-		</div>
+		
 
 		<script src="JS/VirtualJoystick.js"></script>
 		<script src="JS/Keyboard.js"></script>
@@ -192,25 +189,23 @@
         			if (isMobile) {
 	   				if( joystick.right() ){
 	     					player.position.x += 1;
-						player.rotation.y = 270;
+						player.rotation.y -= 1;
 						console.log(player.rotation);
 						camera.position.x += 1;
    	   				}
   	   				if( joystick.left() ){
 	     					player.position.x -= 1;
-						player.rotation.y = 90;
+						player.rotation.y -= 1;
 						console.log(player.rotation);
 						camera.position.x -= 1;
  	   				}
   	   				if( joystick.up() ){
 	     					player.position.z += 1;
-						player.rotation.y = 0;
 						console.log(player.rotation);
 						camera.position.z += 1;
  	   				}
  	   				if( joystick.down() ){
  	     					player.position.z -= 1;
-						player.rotation.y = 180;
 						console.log(player.rotation);
 						camera.position.z -= 1;
    	   				}
