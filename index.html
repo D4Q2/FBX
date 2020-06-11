@@ -189,15 +189,17 @@
         			if (isMobile) {
 	   				if( joystick.right() ){
 	     					player.position.x += 1;
-						player.rotation.y -= 0.1;
+						player.rotation.y -= 0.05;
 						console.log(player.rotation);
 						camera.position.x += 1;
+						camera.rotation.y -= 0.05;
    	   				}
   	   				if( joystick.left() ){
 	     					player.position.x -= 1;
-						player.rotation.y -= 0.1;
+						player.rotation.y -= 0.05;
 						console.log(player.rotation);
 						camera.position.x -= 1;
+						camera.position.y -= 0.05;
  	   				}
   	   				if( joystick.up() ){
 	     					player.position.z += 1;
