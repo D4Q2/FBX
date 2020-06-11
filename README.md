@@ -1,5 +1,3 @@
-<a href="https://d4q2.github.io/FBX/" class="button">Play Game (link)</a>
-hi
-<input class="button" type="submit" value="Play Game (input)">
-hello
-<button class="button big" type="submit">Play Game (button)</button>
+# FBX Game
+
+<a href="#" class="button pill">This is a pill button</a>
