@@ -98,11 +98,11 @@
 				// Check if this is a mobiel device
 				// If it is, create a joystick
 				// If it is not, setup the keyboard
-	                        if (isMobile) {
+	                        /*if (isMobile) {
 		                        if (/iPhone/i.test(navigator.userAgent)) {
 			                	alert("This web application does not work very well on iPhone's. You may want to switch to a tablet or computer for a better experience.");
 		                	}
-		                	if (window.innerWidth > window.innerHeight) {
+		                	if (window.innerWidth > window.innerHeight) { */
 		   		        	// Landscape
 		   				var joystick = new VirtualJoystick({
                       					mouseSupport: true,
@@ -112,7 +112,7 @@
 		      					limitStickTravel: true,
 		      					stickRadius: 50
                    				}); 
-					}
+					/*}
 					else { 
 		    				// Portrait
 	            				var joystick = new VirtualJoystick({
@@ -125,7 +125,7 @@
                    				}); 
 					}
 		
-				} 
+				}  */
 				if (!isMobile) {
 					var keyboard = new Keyboard();
 				}
