@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 30.8</title>
+		<title>Version -> 30.9</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -165,18 +165,22 @@
 					keyboard.update();
 	  				if( keyboard.isKeyPressed("D") ){
  	    					player.position.x -= 1;
+						player.rotation.y = 90;
 						camera.position.x -= 1;
    	  				}
    	  				if( keyboard.isKeyPressed("A") ){
  	    					player.position.x += 1;
+						player.rotation.y = 270;
 						camera.position.x += 1;
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
 	     					player.position.z += 1;
+						player.rotation.y = 0;
 						camera.position.z += 1;
    	  				}
    	  				if( keyboard.isKeyPressed("S") ){
  	    					player.position.z -= 1;
+						player.rotation.y = 180;
 						camera.position.z -= 1;
    	  				}
 				}
@@ -184,18 +188,22 @@
         			if (isMobile) {
 	   				if( joystick.right() ){
 	     					player.position.x += 1;
+						player.rotation.y = 90;
 						camera.position.x += 1;
    	   				}
   	   				if( joystick.left() ){
-	     					player.position.x -= 1; 
+	     					player.position.x -= 1;
+						player.rotation.y = 270;
 						camera.position.x -= 1;
  	   				}
   	   				if( joystick.up() ){
 	     					player.position.z += 1;
+						player.rotation.y = 0;
 						camera.position.z += 1;
  	   				}
  	   				if( joystick.down() ){
  	     					player.position.z -= 1;
+						player.rotation.y = 180;
 						camera.position.z -= 1;
    	   				}
 				}
