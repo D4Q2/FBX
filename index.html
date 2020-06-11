@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 30.6</title>
+		<title>Version -> 30.7</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -58,7 +58,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.set( 47.18299904002082, 294.14085485863814, -260.74480819300794 ); 
+				camera.position.set( 6.028232136120276, 294.14085485863814, -264.91083559441694 );
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xa0a0a0 );
@@ -158,7 +158,8 @@
 				renderer.render( scene, camera );
 
 				stats.update();
-				console.log(camera.position);
+				console.log("Position: " + camera.position);
+				console.log("Rotation: " + camera.rotation);
 		 
 				let translateSpeed = 1; // units per second
    
