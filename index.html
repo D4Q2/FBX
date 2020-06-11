@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>FBX -> 23</title>
+		<title>FBX -> 24</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -27,7 +27,7 @@
 
 			var container, stats, controls;
 			var camera, scene, renderer, light;
-			var player;
+			var player = new THREE.Object3D();
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			var keyboard = new Keyboard();
@@ -136,12 +136,11 @@
 
 					mixer = new THREE.AnimationMixer( object );
 					
-					player = object;
 
-					var action = mixer.clipAction( player.animations[ 0 ] );
+					var action = mixer.clipAction( object.animations[ 0 ] );
 					action.play();
 
-					player.traverse( function ( child ) {
+					object.traverse( function ( child ) {
 
 						if ( child.isMesh ) {
 
@@ -150,14 +149,11 @@
 
 						}
 						
+						player.add( object );
+						scene.add( player );
 
 					} );
-					player.position.set(0, 0, -10);
-					console.log(player.position);
-					scene.add( player );
-					player.position.set(0, 0, -20);
-					console.log(player.position);
-					console.log(object.position);
+					
 					
 					var delta = clock.getDelta();
 									let translateSpeed = 1; // units per second
