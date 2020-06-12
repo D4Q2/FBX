@@ -28,16 +28,7 @@
 			var player = new THREE.Object3D();
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-			if (isMobile) {
-				var joystick = new VirtualJoystick({
-                      			mouseSupport: false,
-		      			stationaryBase: true,
-                      			baseX: window.innerWidth / 6,
-                      			baseY: window.innerHeight / 3 * 2,
-		      			limitStickTravel: true,
-		      			stickRadius: window.innerHeight / 6
-                   		});
-			}
+			
 			if (!isMobile) {
 				var keyboard = new Keyboard();
 			}
@@ -227,6 +218,17 @@
 						controls.update();
 					}*/
 				}
+			}
+			
+			if (isMobile) {
+				var joystick = new VirtualJoystick({
+                      			mouseSupport: false,
+		      			stationaryBase: true,
+                      			baseX: window.innerWidth / 6,
+                      			baseY: window.innerHeight / 3 * 2,
+		      			limitStickTravel: true,
+		      			stickRadius: window.innerHeight / 6
+                   		});
 			}
 		</script>
 	</body>
