@@ -96,10 +96,11 @@
 				container.appendChild( renderer.domElement );
 
 				controls = new OrbitControls( camera, renderer.domElement );
-				controls.target.set( player.position );
+				var pos = player.position;
+				console.log(pos);
+				controls.target.set( pos.x, pos.y, pos.z );
 				if (!isMobile) {
 					controls.update();
-					player.rotation.y = camera.rotation.y;
 				}
 
 				window.addEventListener( 'resize', onWindowResize, false );
