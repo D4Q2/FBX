@@ -161,7 +161,7 @@
 				let translateSpeed = 1; // units per second
    
 				if(!isMobile){
-					var playerForward = 0;
+					//var playerForward = 0;
 					keyboard.update();
 					/*player.translateOnAxis(playerForward, 1);
 					camera.translateOnAxis(playerForward, 1);
@@ -170,41 +170,41 @@
 					
 	  				if( keyboard.isKeyPressed("D") ){
  	    					player.position.x -= 1;
-						player.rotation.y = 270;
-						console.log(player.rotation);
-						camera.position.x -= 1;
+						//player.rotation.y = 270;
+						//console.log(player.rotation);
+						//camera.position.x -= 1;
    	  				}
    	  				if( keyboard.isKeyPressed("A") ){
  	    					player.position.x += 1;
-						player.rotation.y = 90;
-						console.log(player.rotation);
-						camera.position.x += 1;
+						//player.rotation.y = 90;
+						//console.log(player.rotation);
+						//camera.position.x += 1;
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
 	     					player.position.z += 1;
-						player.rotation.y = 0;
-						console.log(player.rotation);
-						camera.position.z += 1;
+						//player.rotation.y = 0;
+						//console.log(player.rotation);
+						//camera.position.z += 1;
    	  				}
    	  				if( keyboard.isKeyPressed("S") ){
  	    					player.position.z -= 1;
-						player.rotation.y = 135;
-						console.log(player.rotation);
-						camera.position.z -= 1;
+						//player.rotation.y = 135;
+						//console.log(player.rotation);
+						//camera.position.z -= 1;
    	  				}
 				}
 
         			if (isMobile) {
 	   				if( joystick.right() ){
 	     					player.position.x += 1;
-						player.rotation.y -= 0.05;
+						//player.rotation.y -= 0.05;
 						console.log(player.rotation);
 						//camera.position.x += 1;
 						//camera.rotation.y -= 0.05;
    	   				}
   	   				if( joystick.left() ){
 	     					player.position.x -= 1;
-						player.rotation.y += 0.05;
+						//player.rotation.y += 0.05;
 						console.log(player.rotation);
 						//camera.position.x -= 1;
 						//camera.position.y += 0.05;
