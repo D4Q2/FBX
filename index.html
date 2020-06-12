@@ -148,9 +148,9 @@
 			function animate() {
 				var pos = player.position;
 				controls.target.set( pos.x, pos.y + 200, pos.z );
-				if (!isMobile) {
+				//if (!isMobile) {
 					controls.update();
-				}
+				//}
 
 				requestAnimationFrame( animate );
 
@@ -199,14 +199,14 @@
 
         			if (isMobile) {
 	   				if( joystick.right() ){
-	     					player.position.x += 1;
+	     					player.position.x -= 1;
 						//player.rotation.y -= 0.05;
 						console.log(player.rotation);
 						//camera.position.x += 1;
 						//camera.rotation.y -= 0.05;
    	   				}
   	   				if( joystick.left() ){
-	     					player.position.x -= 1;
+	     					player.position.x += 1;
 						//player.rotation.y += 0.05;
 						console.log(player.rotation);
 						//camera.position.x -= 1;
@@ -222,9 +222,9 @@
 						console.log(player.rotation);
 						//transform.translateOnAxis(kForward, moveSpeed * deltaTime)
    	   				}
-					else {
+					/*else {
 						controls.update();
-					}
+					}*/
 				}
 			}
 		</script>
