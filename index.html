@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 48.3</title>
+		<title>Version -> 48.4</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -96,12 +96,7 @@
 				container.appendChild( renderer.domElement );
 
 				controls = new OrbitControls( camera, renderer.domElement );
-				var pos = player.position;
-				console.log(pos);
-				controls.target.set( pos.x, pos.y, pos.z );
-				if (!isMobile) {
-					controls.update();
-				}
+				
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
@@ -151,6 +146,12 @@
 			
 
 			function animate() {
+				var pos = player.position;
+				console.log(pos);
+				controls.target.set( pos.x, pos.y, pos.z );
+				if (!isMobile) {
+					controls.update();
+				}
 
 				requestAnimationFrame( animate );
 
