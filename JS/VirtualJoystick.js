@@ -266,6 +266,9 @@ VirtualJoystick.prototype._onTouchStart	= function(event)
 
 VirtualJoystick.prototype._onTouchEnd	= function(event)
 {
+	if(this.touchIdx > 100){
+	   return;
+        }
 	// if there is no touch in progress, do nothing
 	if( this._touchIdx === null )	return;
 
