@@ -87,6 +87,17 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				container.appendChild( renderer.domElement );
+				
+				if (isMobile) {
+				var joystick = new VirtualJoystick({
+                      			mouseSupport: false,
+		      			stationaryBase: true,
+                      			baseX: window.innerWidth / 6,
+                      			baseY: window.innerHeight / 3 * 2,
+		      			limitStickTravel: true,
+		      			stickRadius: 50
+                   		});
+			        }
 
 				controls = new OrbitControls( camera, renderer.domElement );
 
@@ -134,16 +145,7 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 
 			}
-			if (isMobile) {
-				var joystick = new VirtualJoystick({
-                      			mouseSupport: false,
-		      			stationaryBase: true,
-                      			baseX: window.innerWidth / 6,
-                      			baseY: window.innerHeight / 3 * 2,
-		      			limitStickTravel: true,
-		      			stickRadius: 50
-                   		});
-			}
+			
 
 			
 
