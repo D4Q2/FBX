@@ -97,6 +97,9 @@
 
 				controls = new OrbitControls( camera, renderer.domElement );
 				controls.target.set( 0, 150, -20 );
+				if (!isMobile) {
+					controls.update();
+				}
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
@@ -165,8 +168,6 @@
 					/*player.translateOnAxis(playerForward, 1);
 					camera.translateOnAxis(playerForward, 1);
 					console.log(camera.position);*/
-					
-					controls.update();
 					
 	  				if( keyboard.isKeyPressed("J") ){
  	    					player.position.x -= 1;
