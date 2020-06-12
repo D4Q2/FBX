@@ -99,6 +99,7 @@
 				controls.target.set( 0, 150, -20 );
 				if (!isMobile) {
 					controls.update();
+					player.rotation.y = camera.rotation.y;
 				}
 
 				window.addEventListener( 'resize', onWindowResize, false );
