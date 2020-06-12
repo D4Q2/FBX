@@ -8,6 +8,7 @@
 	</head>
 
 	<body>
+		<canvas id="gameCanvas">...loading...</canvas>
 		
 
 		<script src="JS/VirtualJoystick.js"></script>
@@ -96,7 +97,6 @@
 				container.appendChild( renderer.domElement );
 
 				controls = new OrbitControls( camera, renderer.domElement );
-				
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
