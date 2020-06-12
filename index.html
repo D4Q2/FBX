@@ -26,6 +26,7 @@
 			var container, stats, controls;
 			var camera, scene, renderer, light;
 			var player = new THREE.Object3D();
+			var joystick;
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			
@@ -39,7 +40,6 @@
 			var mixer;
 
 			init();
-			init2();
 			animate();
 
 			function init() {
@@ -88,20 +88,20 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				container.appendChild( renderer.domElement );
-			}
 			
-			if(isMobile) {
-				var joystick = new VirtualJoystick({
-                      			mouseSupport: false,
-		      			stationaryBase: true,
-                      			baseX: window.innerWidth / 6,
-                      			baseY: window.innerHeight / 3 * 2,
-		      			limitStickTravel: true,
-		      			stickRadius: 50
-                   		});
-			 }
+			
+			        if(isMobile) {
+				        joystick = new VirtualJoystick({
+                      			        mouseSupport: false,
+		      			        stationaryBase: true,
+                      			        baseX: window.innerWidth / 6,
+                      			        baseY: window.innerHeight / 3 * 2,
+		      			        limitStickTravel: true,
+		      			        stickRadius: 50
+                   		        });
+			         }
 				
-			function init2(){
+			
 
 				controls = new OrbitControls( camera, renderer.domElement );
 
