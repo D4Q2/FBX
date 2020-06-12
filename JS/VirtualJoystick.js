@@ -113,7 +113,7 @@ VirtualJoystick.prototype.up	= function(){
 	var deltaX	= this.deltaX();
 	var deltaY	= this.deltaY();
 	if( deltaY >= 0 )				return false;
-	if ( deltaY > 100 )                             return false;
+	if ( deltaY < -100 )                            return false;
 	if( Math.abs(deltaX) > 2*Math.abs(deltaY) )	return false;
 	return true;
 }
@@ -122,7 +122,7 @@ VirtualJoystick.prototype.down	= function(){
 	var deltaX	= this.deltaX();
 	var deltaY	= this.deltaY();
 	if( deltaY <= 0 )				return false;
-        if ( deltaY < 100 )                             return false;
+        if ( deltaY > 100 )                             return false;
 	if( Math.abs(deltaX) > 2*Math.abs(deltaY) )	return false;
 	return true;	
 }
@@ -131,7 +131,7 @@ VirtualJoystick.prototype.right	= function(){
 	var deltaX	= this.deltaX();
 	var deltaY	= this.deltaY();
 	if( deltaX <= 0 )				return false;
-	if ( deltaX < 100 )                             return false;
+	if ( deltaX > 100 )                             return false;
 	if( Math.abs(deltaY) > 2*Math.abs(deltaX) )	return false;
 	return true;	
 }
@@ -140,7 +140,7 @@ VirtualJoystick.prototype.left	= function(){
 	var deltaX	= this.deltaX();
 	var deltaY	= this.deltaY();
 	if( deltaX >= 0 )				return false;
-	if ( deltaX > 100 )                             return false;
+	if ( deltaX > -100 )                            return false;
 	if( Math.abs(deltaY) > 2*Math.abs(deltaX) )	return false;
 	return true;	
 }
