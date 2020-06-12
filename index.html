@@ -29,12 +29,12 @@
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			if (isMobile) {
 				var joystick = new VirtualJoystick({
-                      			mouseSupport: true,
+                      			mouseSupport: false,
 		      			stationaryBase: true,
                       			baseX: window.innerWidth / 6,
                       			baseY: window.innerHeight / 3 * 2,
 		      			limitStickTravel: true,
-		      			stickRadius: 50
+		      			stickRadius: window.innerHeight / 6
                    		});
 			}
 			if (!isMobile) {
