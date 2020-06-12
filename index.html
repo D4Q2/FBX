@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 50.1</title>
+		<title>Version -> 51</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
 	</head>
 
 	<body>
-		<canvas id="gameCanvas">...loading...</canvas>
+		<canvas id="gameCanvas" style="display: block;">...loading...</canvas>
 		
 
 		<script src="JS/VirtualJoystick.js"></script>
@@ -89,8 +89,9 @@
 				scene.add( grid );
 
 				
+				var gameCanvas = document.getElementById("gameCanvas");
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer = new THREE.WebGLRenderer( { antialias: true, canvas: gameCanvas } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
