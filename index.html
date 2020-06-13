@@ -9,7 +9,8 @@
 	<body>
 		<canvas id="gameCanvas" style="display: block; position: fixed;"></canvas>
 		
-		<script src="JS/PointerLock.js"></script>
+		
+		
 		<script src="JS/VirtualJoystick.js"></script>
 		<script src="JS/Keyboard.js"></script>
 		
@@ -104,9 +105,7 @@
 				
 			
 
-				//controls = new OrbitControls( camera, renderer.domElement );
-				viewControl = new THREE.PointerLockControls(camera);
-                                scene.add(viewControl.getObject());
+				controls = new OrbitControls( camera, renderer.domElement );
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
