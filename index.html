@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 54.1</title>
+		<title>Version -> 54.2</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	</head>
@@ -110,6 +110,55 @@
 				stats = new Stats();
 				container.appendChild( stats.dom );
 				
+				
+				
+
+				/*
+				// Create the ground plane that the maze sits on top of
+				function createGround() {
+    					// Create the ground geometry and material
+    					var groundGeo = new THREE.PlaneGeometry(mapSize, mapSize);
+    					var groundMat = new THREE.MeshPhongMaterial({ color: 0xA0522D, side: THREE.DoubleSide, shading: THREE.FlatShading });
+
+    					// Create the ground and rotate it flat
+    					var ground = new THREE.Mesh(groundGeo, groundMat);
+    					ground.position.set(0, 1, 0);
+    					ground.rotation.x = degreesToRadians(90);
+    					scene.add(ground);
+				}
+
+
+// Make the four perimeter walls for the maze
+function createPerimWalls() {
+    var halfMap = mapSize / 2;  // Half the size of the map
+    var sign = 1;               // Used to make an amount positive or negative
+
+    // Loop through twice, making two perimeter walls at a time
+    for (var i = 0; i < 2; i++) {
+        var perimGeo = new THREE.PlaneGeometry(mapSize, UNITHEIGHT);
+        // Make the material double sided
+        var perimMat = new THREE.MeshPhongMaterial({ color: 0x464646, side: THREE.DoubleSide });
+        // Make two walls
+        var perimWallLR = new THREE.Mesh(perimGeo, perimMat);
+        var perimWallFB = new THREE.Mesh(perimGeo, perimMat);
+
+        // Create left/right walls
+        perimWallLR.position.set(halfMap * sign, UNITHEIGHT / 2, 0);
+        perimWallLR.rotation.y = degreesToRadians(90);
+        scene.add(perimWallLR);
+        collidableObjects.push(perimWallLR);
+        // Create front/back walls
+        perimWallFB.position.set(0, UNITHEIGHT / 2, halfMap * sign);
+        scene.add(perimWallFB);
+        collidableObjects.push(perimWallFB);
+
+        sign = -1; // Swap to negative value
+    }
+}*/
+				
+				createMazeCubes();
+				
+				
 				// Set up our fbx
 				var loader = new FBXLoader();
 				loader.load( 'Rifle Run.fbx', function ( object ) {
@@ -138,6 +187,68 @@
 					} );
 				});
 			}
+			
+			
+			// Create the maze walls using cubes that are mapped with a 2D array
+				function createMazeCubes() {
+    					// Maze wall mapping, assuming matrix
+    					// 1's are cubes, 0's are empty space
+    					var map = [
+        					[0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0,],
+        					[0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0,],
+        					[0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0,],
+        					[0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
+        					[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
+        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
+        					[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
+        					[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
+        					[0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1,],
+        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0,],
+        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1,],
+        					[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0,],
+        					[0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0,],
+        					[1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0,],
+        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        					[1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,],
+        					[0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,],
+        					[0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,]
+    					];
+
+    					// wall details
+   					var cubeGeo = new THREE.BoxGeometry(UNITWIDTH, UNITHEIGHT, UNITWIDTH);
+    					var cubeMat = new THREE.MeshPhongMaterial({ color: 0x81cfe0 });
+
+    					// Keep cubes within boundary walls
+    					var widthOffset = UNITWIDTH / 2;
+    					// Put the bottom of the cube at y = 0
+    					var heightOffset = UNITHEIGHT / 2;
+
+    					// See how wide the map is by seeing how long the first array is
+    					totalCubesWide = map[0].length;
+
+    					// Place walls where 1`s are
+    					for (var i = 0; i < totalCubesWide; i++) {
+        					for (var j = 0; j < map[i].length; j++) {
+            						// If a 1 is found, add a cube at the corresponding position
+            						if (map[i][j]) {
+               						 	// Make the cube
+                						var cube = new THREE.Mesh(cubeGeo, cubeMat);
+                						// Set the cube position
+                						cube.position.z = (i - totalCubesWide / 2) * UNITWIDTH + widthOffset;
+                						cube.position.y = heightOffset;
+                						cube.position.x = (j - totalCubesWide / 2) * UNITWIDTH + widthOffset;
+                						// Add the cube
+                						scene.add(cube);
+                						// Used later for collision detection
+                						collidableObjects.push(cube);
+            						}
+       					 	}
+    					}
+    					// Create the ground based on the map size the matrix/cube size produced
+   				 	mapSize = totalCubesWide * UNITWIDTH;
+				}
 			
 			        
 
