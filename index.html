@@ -26,6 +26,8 @@
 			var camera, scene, renderer, light;
 			var player = new THREE.Object3D();
 			var joystick;
+			var UNITWIDTH = 1; 
+			var UNITHEIGHT = 1;
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			
@@ -111,51 +113,6 @@
 				container.appendChild( stats.dom );
 				
 				
-				
-
-				/*
-				// Create the ground plane that the maze sits on top of
-				function createGround() {
-    					// Create the ground geometry and material
-    					var groundGeo = new THREE.PlaneGeometry(mapSize, mapSize);
-    					var groundMat = new THREE.MeshPhongMaterial({ color: 0xA0522D, side: THREE.DoubleSide, shading: THREE.FlatShading });
-
-    					// Create the ground and rotate it flat
-    					var ground = new THREE.Mesh(groundGeo, groundMat);
-    					ground.position.set(0, 1, 0);
-    					ground.rotation.x = degreesToRadians(90);
-    					scene.add(ground);
-				}
-
-
-// Make the four perimeter walls for the maze
-function createPerimWalls() {
-    var halfMap = mapSize / 2;  // Half the size of the map
-    var sign = 1;               // Used to make an amount positive or negative
-
-    // Loop through twice, making two perimeter walls at a time
-    for (var i = 0; i < 2; i++) {
-        var perimGeo = new THREE.PlaneGeometry(mapSize, UNITHEIGHT);
-        // Make the material double sided
-        var perimMat = new THREE.MeshPhongMaterial({ color: 0x464646, side: THREE.DoubleSide });
-        // Make two walls
-        var perimWallLR = new THREE.Mesh(perimGeo, perimMat);
-        var perimWallFB = new THREE.Mesh(perimGeo, perimMat);
-
-        // Create left/right walls
-        perimWallLR.position.set(halfMap * sign, UNITHEIGHT / 2, 0);
-        perimWallLR.rotation.y = degreesToRadians(90);
-        scene.add(perimWallLR);
-        collidableObjects.push(perimWallLR);
-        // Create front/back walls
-        perimWallFB.position.set(0, UNITHEIGHT / 2, halfMap * sign);
-        scene.add(perimWallFB);
-        collidableObjects.push(perimWallFB);
-
-        sign = -1; // Swap to negative value
-    }
-}*/
-				
 				createMazeCubes();
 				
 				
@@ -194,26 +151,26 @@ function createPerimWalls() {
     					// Maze wall mapping, assuming matrix
     					// 1's are cubes, 0's are empty space
     					var map = [
-        					[0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0,],
-        					[0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0,],
-        					[0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0,],
-        					[0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-        					[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-        					[1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-        					[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,],
-        					[0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1,],
-        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0,],
-        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1,],
-        					[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0,],
-        					[0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0,],
-        					[1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0,],
-        					[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
-        					[1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,],
-        					[0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,],
-        					[0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,]
+        					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,],
+        					[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1,],
+        					[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1,],
+        					[1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1,],
+        					[1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1,],
+        					[1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1,],
+        					[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,]
     					];
 
     					// wall details
@@ -226,7 +183,7 @@ function createPerimWalls() {
     					var heightOffset = UNITHEIGHT / 2;
 
     					// See how wide the map is by seeing how long the first array is
-    					totalCubesWide = map[0].length;
+    					var totalCubesWide = map[0].length;
 
     					// Place walls where 1`s are
     					for (var i = 0; i < totalCubesWide; i++) {
@@ -242,7 +199,7 @@ function createPerimWalls() {
                 						// Add the cube
                 						scene.add(cube);
                 						// Used later for collision detection
-                						collidableObjects.push(cube);
+                						//collidableObjects.push(cube);
             						}
        					 	}
     					}
