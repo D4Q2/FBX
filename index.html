@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 55.5</title>
+		<title>Version -> 55.6</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	</head>
@@ -24,7 +24,8 @@
 			import { FBXLoader } from './JS/FBXLoader.js';
 
 			var container, stats, controls;
-			var player, scene, renderer, light;
+			var camera, scene, renderer, light;
+			var player = new THREE.object3D();
 			var joystick;
 			var UNITWIDTH = 100; 
 			var UNITHEIGHT = 300;
@@ -48,8 +49,10 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				player = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				player.position.set( 6.028232136120276, 294.14085485863814, -264.91083559441694 );
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.set( 6.028232136120276, 294.14085485863814, -264.91083559441694 );
+				player.add(camera);
+				scene.add(player);
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xa0a0a0 );
