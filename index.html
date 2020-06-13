@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 52.1</title>
+		<title>Version -> 53</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -176,6 +176,7 @@
 				if(!isMobile){
 					//var playerForward = 0;
 					keyboard.update();
+					player.rotation.y = camera.rotation.y;
 					/*player.translateOnAxis(playerForward, 1);
 					camera.translateOnAxis(playerForward, 1);
 					console.log(camera.position);*/
