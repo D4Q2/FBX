@@ -24,8 +24,7 @@
 			import { FBXLoader } from './JS/FBXLoader.js';
 
 			var container, stats, controls;
-			var camera, scene, renderer, light;
-			var player = new THREE.Object3D();
+			var player, scene, renderer, light;
 			var joystick;
 			var UNITWIDTH = 100; 
 			var UNITHEIGHT = 100;
@@ -49,8 +48,8 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.set( 6.028232136120276, 294.14085485863814, -264.91083559441694 );
+				player = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				player.position.set( 6.028232136120276, 294.14085485863814, -264.91083559441694 );
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xa0a0a0 );
@@ -280,27 +279,15 @@
         			if (isMobile) {
 	   				if( joystick.right() ){
 	     					player.position.x -= 1;
-						//player.rotation.y -= 0.05;
-						console.log(player.rotation);
-						//camera.position.x += 1;
-						//camera.rotation.y -= 0.05;
    	   				}
   	   				if( joystick.left() ){
-	     					player.position.x += 1;
-						//player.rotation.y += 0.05;
-						console.log(player.rotation);
-						//camera.position.x -= 1;
-						//camera.position.y += 0.05;
+	     					player.position.x += 1;						
  	   				}
   	   				if( joystick.up() ){
 	     					player.position.z += 1;
-						console.log(player.rotation);
-						//camera.position.z += 1;
  	   				}
  	   				if( joystick.down() ){
  	     					player.position.z -= 1;
-						console.log(player.rotation);
-						//transform.translateOnAxis(kForward, moveSpeed * deltaTime)
    	   				}
 					/*else {
 						controls.update();
