@@ -2,6 +2,8 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
+import * as THREE from './three.module.js';
+
 THREE.PointerLockControls = function ( camera ) {
 
 	var scope = this;
