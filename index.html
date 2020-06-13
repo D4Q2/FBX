@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 56.3</title>
+		<title>Version -> 56.4</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	</head>
@@ -51,7 +51,7 @@
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 				camera.position.set( 6.028232136120276, 294.14085485863814, -264.91083559441694 );
-			        scene.add(camera);
+			        player.add(camera);
 				
 
 				scene = new THREE.Scene();
@@ -108,6 +108,7 @@
 			
 
 				controls = new OrbitControls( camera, renderer.domElement );
+				control1 = new OrbitControls( player, renderer.domElement );
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
@@ -231,7 +232,7 @@
 
 			function animate() {
 				var pos = player.position;
-				controls.target.set( pos.x, pos.y + 200, pos.z - 100 );
+				controls.target.set( pos.x, pos.y + 200, pos.z );
 			
 				controls.update();
 				
@@ -271,16 +272,16 @@
 
         			if (isMobile) {
 	   				if( joystick.right() ){
-	     					camera.position.x -= 1;
+	     					player.position.x -= 1;
    	   				}
   	   				if( joystick.left() ){
-	     					camera.position.x += 1;						
+	     					player.position.x += 1;						
  	   				}
   	   				if( joystick.up() ){
-	     					camera.position.z += 1;
+	     					player.position.z += 1;
  	   				}
  	   				if( joystick.down() ){
- 	     					camera.position.z -= 1;
+ 	     					player.position.z -= 1;
    	   				}
 					/*else {
 						controls.update();
