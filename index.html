@@ -51,7 +51,7 @@
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 				camera.position.set( 6.028232136120276, 294.14085485863814, -264.91083559441694 );
-				player.add(camera);
+			        scene.add(camera);
 				
 
 				scene = new THREE.Scene();
@@ -271,16 +271,16 @@
 
         			if (isMobile) {
 	   				if( joystick.right() ){
-	     					player.position.x -= 1;
+	     					camera.position.x -= 1;
    	   				}
   	   				if( joystick.left() ){
-	     					player.position.x += 1;						
+	     					camera.position.x += 1;						
  	   				}
   	   				if( joystick.up() ){
-	     					player.position.z += 1;
+	     					camera.position.z += 1;
  	   				}
  	   				if( joystick.down() ){
- 	     					player.position.z -= 1;
+ 	     					camera.position.z -= 1;
    	   				}
 					/*else {
 						controls.update();
