@@ -27,8 +27,8 @@
 			var camera, scene, renderer, light;
 			var player = new THREE.Object3D();
 			var joystick;
-			var UNITWIDTH = 100; 
-			var UNITHEIGHT = 300;
+			var UNITWIDTH = 200; 
+			var UNITHEIGHT = 400;
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			
@@ -230,8 +230,8 @@
 			
 
 			function animate() {
-				var pos = player.position;
-				controls.target.set( pos.x, pos.y + 200, pos.z );
+				var pos = camera.position;
+				controls.target.set( pos.x, pos.y, pos.z );
 			
 				controls.update();
 				
