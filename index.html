@@ -134,11 +134,11 @@
 							child.receiveShadow = true;
 
 						}
-						
+						/*
 						enemy.add( object );
 						scene.add( enemy );
 						
-						enemy.position.set(30, 0, 30);
+						enemy.position.set(30, 0, 30);*/
 
 
 
@@ -225,9 +225,9 @@
 			function animate() {
 				var pos = player.position;
 				controls.target.set( pos.x, pos.y + 200, pos.z );
-				//if (!isMobile) {
-					controls.update();
-				//}
+			
+				controls.update();
+				
 
 				requestAnimationFrame( animate );
 
@@ -241,40 +241,26 @@
 		 
 				let translateSpeed = 1; // units per second
    
-				if(!isMobile){
-					//var playerForward = 0;
-					keyboard.update();
-					player.rotation.y = camera.rotation.y * -1;
-					/*player.translateOnAxis(playerForward, 1);
-					camera.translateOnAxis(playerForward, 1);
-					console.log(camera.position);*/
+				/*if(!isMobile){
+					
 					
 	  				if( keyboard.isKeyPressed("D") ){
  	    					player.position.x -= 1;
-						//player.rotation.y = 270;
-						//console.log(player.rotation);
-						//camera.position.x -= 1;
+						
    	  				}
    	  				if( keyboard.isKeyPressed("A") ){
  	    					player.position.x += 1;
-						//player.rotation.y = 90;
-						//console.log(player.rotation);
-						//camera.position.x += 1;
+						
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
-	     					//player.position.z += 1;
-						player.translateOnAxis(-camera.rotation.y, 1 * delta);
-						//player.rotation.y = 0;
-						//console.log(player.rotation);
-						//camera.position.z += 1;
+	     					player.position.z += 1;
+						
    	  				}
    	  				if( keyboard.isKeyPressed("S") ){
  	    					player.position.z -= 1;
-						//player.rotation.y = 135;
-						//console.log(player.rotation);
-						//camera.position.z -= 1;
+						
    	  				}
-				}
+				}*/
 
         			if (isMobile) {
 	   				if( joystick.right() ){
