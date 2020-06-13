@@ -27,8 +27,8 @@
 			var camera, scene, renderer, light;
 			var player = new THREE.Object3D();
 			var joystick;
-			var UNITWIDTH = 1; 
-			var UNITHEIGHT = 1;
+			var UNITWIDTH = 10; 
+			var UNITHEIGHT = 10;
 			
 			var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			
@@ -136,11 +136,12 @@
 
 						}
 						
-						player.add( object );
+						enemy.add( object );
+						scene.add( enemy );
+						
+						enemy.position.set(30, 0, 30);
 
-                                                //player.add( camera );
-						camera.add( player );
-						player.position.set(0, 0, -20);
+
 
 					} );
 				});
