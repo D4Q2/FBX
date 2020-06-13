@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Version -> 54.4</title>
+		<title>Version -> 54.5</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	</head>
@@ -104,7 +104,9 @@
 				
 			
 
-				controls = new OrbitControls( camera, renderer.domElement );
+				//controls = new OrbitControls( camera, renderer.domElement );
+				viewControl = new THREE.PointerLockControls(camera);
+                                scene.add(viewControl.getObject());
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
