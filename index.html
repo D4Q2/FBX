@@ -193,7 +193,8 @@
 						//camera.position.x += 1;
   	  				}
    	  				if( keyboard.isKeyPressed("W") ){
-	     					player.position.z += 1;
+	     					//player.position.z += 1;
+						player.transform.translateOnAxis(-camera.rotation.y, 1 * delta);
 						//player.rotation.y = 0;
 						//console.log(player.rotation);
 						//camera.position.z += 1;
