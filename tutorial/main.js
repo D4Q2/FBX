@@ -92,7 +92,7 @@ function init() {
   // Add ground plane
   createGround();
   // Add boundry walls that surround the maze
-  createPerimWalls();
+  //createPerimWalls();
 
   // Add lights to the scene
   addLights();
